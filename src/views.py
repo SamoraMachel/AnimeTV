@@ -1,10 +1,10 @@
 from config import app as application
 from flask import render_template
-from dotenv import load_dotenv
+import utils
 
-load_dotenv()
 
 
 @application.route('/', methods=['GET'])
 def index():
-    return render_template('main.html')
+    return utils.get_genres()
+    # return render_template('main.html')
