@@ -4,3 +4,4 @@ bin/**
 lib/**
 **/__pycache__/**
 *.cfg
+.env
