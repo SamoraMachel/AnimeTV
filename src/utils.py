@@ -1,4 +1,3 @@
-from typing import Any, List
 from dotenv import load_dotenv
 import requests
 import os
@@ -13,24 +12,38 @@ HEADERS = {
     'Authorization': 'Bearer ' + anime_bearer_token
 }
 
+ALL_ANIMES = {}
+ALL_GENRES = {}
 
-def get_genres() -> List:
-    genres = []
+
+def get_genres() -> dict:
+    if ALL_GENRES == {}:
+        try: 
+            data  = requests.get(anime_base_url + '/resources/1.0/0', headers=HEADERS)
+        except Exception as e : 
+            data = []
+        else:
+            ALL_GENRES.update(data.json()['data'])
+    return ALL_GENRES
+
+def get_animes() -> dict: 
+    if ALL_ANIMES == {}:
+        try:
+            data = requests.get(anime_base_url + '/anime', headers=HEADERS)
+        except Exception as e:
+            data = []
+        else: 
+            ALL_ANIMES.update(data.json()['data'])
+    return ALL_ANIMES
+    
+def get_specific_anime(id : int) -> dict:
+    anime = {}
     try: 
-        data  = requests.get(anime_base_url + '/resources/1.0/0', headers=HEADERS)
-    except Exception as e : 
-        data = []
-    else:
-        genres = data.json()['data']
-    return genres
-
-def get_animes() -> List: 
-    animes = []
-    try:
-        data = requests.get(anime_base_url + '/anime', headers=HEADERS)
+        data = requests.get(anime_base_url + '/anime/' + id, headers=HEADERS)
     except Exception as e:
         data = []
     else: 
-        animes = data.json()['data']
-    return animes
+        anime = data.json()['data']
+    return anime
+        
     
