@@ -39,9 +39,10 @@ def get_animes() -> dict:
 def get_specific_anime(id : int) -> dict:
     anime = {}
     try: 
-        data = requests.get(anime_base_url + '/anime/' + id, headers=HEADERS)
+        data = requests.get(anime_base_url + '/anime/' + str(id), headers=HEADERS)
     except Exception as e:
         data = []
+        print(e)
     else: 
         anime = data.json()['data']
     return anime

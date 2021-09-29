@@ -12,4 +12,7 @@ def index():
 
 @application.route('/anime/<id>/<name>', methods=['GET'])
 def detail(id: str, name: str):
-    return '%r %r' % (name, id)
+    anime_id = int(id)
+    anime_response = utils.get_specific_anime(anime_id)
+    # return anime_response
+    return render_template('detail_before_sub.html', anime=anime_response)
