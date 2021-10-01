@@ -8,6 +8,7 @@ load_dotenv()
 anime_base_url = os.getenv('BASE_URL')
 anime_bearer_token = os.getenv('BEARER_TOKEN')
 beyonic_bearer_token = os.getenv('BEYONIC_KEY')
+website_url = os.getenv('WEBSITE_URL')
 
 
 HEADERS = {
@@ -50,4 +51,25 @@ def get_specific_anime(id : int) -> dict:
     return anime
         
 def make_subscription(data : dict):
-    pass
+    first_name = data['first_name']
+    last_name = data['last_name']
+    phone_number = data['phone_number']
+    amount = data['amount']
+    currency = data['currency']
+    callback = website_url
+    
+    payment = beyonic.Payment.create(
+        phonenumber = phone_number,
+        first_name = first_name,
+        last_name = last_name, 
+        amount = amount,
+        currency = currency,
+        callback_url = callback
+    )
+    
+def transaction():
+    transactions = beyonic.Transaction.list()
+    return transactions
+
+def currencies():
+    return beyonic.Currency.list()
