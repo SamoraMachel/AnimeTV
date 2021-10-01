@@ -1,11 +1,13 @@
 from dotenv import load_dotenv
 import requests
+import beyonic  
 import os
 
 load_dotenv()
 
 anime_base_url = os.getenv('BASE_URL')
 anime_bearer_token = os.getenv('BEARER_TOKEN')
+beyonic_bearer_token = os.getenv('BEYONIC_KEY')
 
 
 HEADERS = {
@@ -47,4 +49,5 @@ def get_specific_anime(id : int) -> dict:
         anime = data.json()['data']
     return anime
         
-    
+def make_subscription(data : dict):
+    pass
