@@ -1,0 +1,55 @@
+{% extends 'snippets/base.jinja' %}
+
+{% block contentTitle %}
+    Subscribe
+{% endblock contentTitle %}
+
+{% block contentBody %}
+
+    <div class="sign section--full-bg" data-bg="img/bg.jpg">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<div class="sign__content">
+						<!-- registration form -->
+						<form action="#" class="sign__form">
+							<a href=" {{ url_for('index') }} " class="sign__logo">
+								<h2> Anime Tv </h2>
+							</a>
+
+							<div class="sign__group">
+								<input type="text" class="sign__input" placeholder="First Name">
+							</div>
+
+							<div class="sign__group">
+								<input type="text" class="sign__input" placeholder="Last Name">
+							</div>
+
+							<div class="sign__group">
+								<input type="number" class="sign__input" placeholder="Phone Number">
+							</div>
+
+                            <div class="sign__group">
+								<input type="Amount" class="sign__input" placeholder="Amount" value=200>
+							</div>
+
+                            <div class="sign__group">
+								<input type="text" class="sign__input" placeholder="Currency">
+							</div>
+
+                            <div class="sign__group">
+								<input type="password" class="sign__input" placeholder="Password">
+							</div>
+							
+							<button class="sign__btn" type="button">Subscribe</button>
+
+
+						</form>
+						<!-- registration form -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end sign in -->
+{% endblock contentBody %}
