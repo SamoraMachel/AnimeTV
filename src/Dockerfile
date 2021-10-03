@@ -6,7 +6,7 @@ COPY ./requirements.txt src/
 
 WORKDIR /src
 
-RUN pip -r install requirements.txt
+RUN pip install -r requirements.txt
 
 EXPOSE 8000:5000
 
