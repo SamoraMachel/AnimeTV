@@ -66,6 +66,17 @@ def get_specific_anime(id : int) -> dict:
     else: 
         anime = data.json()['data']
     return anime
+
+def get_anime_episode(id : int) -> dict : 
+    episodes = {}
+    try: 
+        data = requests.get(anime_base_url + f'episode?anime_id={id}' ,
+                            headers=ANIME_HEADER)
+    except Exception as e: 
+        data = []
+    else:
+        episodes = data.json()['data']
+    return episodes
         
 def make_subscription(data : dict):
     first_name = data['first_name']
@@ -83,17 +94,6 @@ def make_subscription(data : dict):
         currency = currency,
         callback_url = callback
     )
-    
-def get_anime_episode(id : int) -> dict : 
-    episodes = {}
-    try: 
-        data = requests.get(anime_base_url + 'episode?anime_id=' + str(id),
-                            headers=ANIME_HEADER)
-    except Exception as e: 
-        data = []
-    else:
-        episodes = data.json()['data']
-    return episodes
     
 def transaction():
     transactions = beyonic.Transaction.list()

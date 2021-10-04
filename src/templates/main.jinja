@@ -2,6 +2,9 @@
 
 {% block contentBody %}    
     {{ super() }}
+
+	
+
     	<!-- home -->
 	<div class="home home">
 		<div class="home__carousel owl-carousel" id="flixtv-hero">
@@ -40,7 +43,7 @@
 				<div class="col-12">
 					<div class="catalog__nav">
 						<div class="catalog__select-wrap">
-							<select class="catalog__select" name="genres">
+							<select class="catalog__select" name="genres" >
 								<option value="All genres">All genres</option>
 								{% for genre in genres %}
 									<option value="{{genre}}">{{genre}}</option>

@@ -6,6 +6,26 @@
 
 {% block contentBody %}
     {{ super() }}
+
+	<!-- head -->
+	<section class="section section--head section--head-fixed">
+		<div class="container">
+			<div class="row">
+				<div class="col-12 col-xl-6">
+					<h1 class="section__title section__title--head">Category</h1>
+				</div>
+
+				<div class="col-12 col-xl-6">
+					<ul class="breadcrumb">
+						<li class="breadcrumb__item"><a href=" {{ url_for('index') }} ">Home</a></li>
+						<li class="breadcrumb__item"><a href=" {{ url_for('catalog') }} ">Catalog</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- end head -->
+
     <!-- catalog -->
 	<div class="catalog">
 		<div class="container">
