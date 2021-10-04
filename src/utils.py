@@ -3,6 +3,8 @@ import requests
 import beyonic  
 import os
 
+from requests.models import Response
+
 load_dotenv()
 
 anime_base_url = os.getenv('BASE_URL')
@@ -67,7 +69,7 @@ def get_specific_anime(id : int) -> dict:
         anime = data.json()['data']
     return anime
 
-def get_anime_episode(id : int) -> dict : 
+def get_anime_episode(id : int) -> Response : 
     episodes = {}
     try: 
         data = requests.get(anime_base_url + f'episode?anime_id={id}' ,
@@ -75,7 +77,7 @@ def get_anime_episode(id : int) -> dict :
     except Exception as e: 
         data = []
     else:
-        episodes = data.json()['data']
+        episodes = data
     return episodes
         
 def make_subscription(data : dict):

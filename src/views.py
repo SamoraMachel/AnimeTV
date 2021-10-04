@@ -16,9 +16,8 @@ def index():
 def detail(id: str, name: str):
     anime_id = int(id)
     anime_response = utils.get_specific_anime(anime_id)
-    anime_episodes = utils.get_anime_episode(anime_id)
-    # return anime_response
-    return render_template('detail_before_sub.jinja', anime=anime_response, episodes=anime_episodes)
+    # anime_episodes = utils.get_anime_episode(anime_id)
+    return render_template('detail_before_sub.jinja', anime=anime_response)
 
 @application.route('/subscribe', methods=['GET','POST'])
 def subsribe():
